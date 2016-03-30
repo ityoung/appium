@@ -1,4 +1,4 @@
-API Rference http://appium.io/slate/cn/v1.4.6-beta/#
+#API Rference http://appium.io/slate/cn/v1.4.6-beta/#
 #默认系统语言对应的Strings.xml文件内的数据。
 get_app_string()
 
