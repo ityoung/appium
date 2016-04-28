@@ -9,9 +9,7 @@ from appium import webdriver
 from selenium.common.exceptions import NoSuchElementException
 from appium.webdriver.common.touch_action import TouchAction
 
-phone_num = '18280336118'
 new_phone_num = '12345611223'
-password = 'lianai0217'
 TIME_format = "%y%m%d%H%M%S"
 img_path_base = 'F:/mhome/resource/'
     
@@ -48,8 +46,10 @@ class Test_Login(unittest.TestCase):
         try:
             tel = self.driver.find_element_by_xpath(me.tel_xpath)
             if tel.text =='请输入手机号':
+                phone_num = input('请输入手机号:')
                 tel.send_keys(phone_num)
                 psw = self.driver.find_element_by_xpath(me.pwd_xpath)
+                password = input('请输入密码:')
                 psw.send_keys(password)
             self.driver.find_element_by_id(me.login_btn).click()
             time.sleep(5)
@@ -77,6 +77,10 @@ class Test_Login(unittest.TestCase):
             raise nee
 
     def test_Logout(self):
+        try:
+            cls.driver.find_element_by_id(me.guide_img).click()
+        except NoSuchElementException as nee:
+            pass
         try:
             self.driver.find_element_by_id(me.me_id).click()
             self.driver.swipe(540,1254,540,834,1000)
@@ -346,15 +350,12 @@ class Test_Anniversary(unittest.TestCase):
             
 if __name__ == '__main__':
     tests_login = ["test_LoginByTel","test_LoginByQQ"]
-    tests_anniversary = ["test_DelAnni_Swipe"]#"test_FillUnset",'test_AddAnni',"test_RemindTime","test_RemindDay_Single",\
-                        # "test_RemindDay_Double","test_DelAnni_Swipe","test_RemindDay_Triple","test_Icon","test_DelAnni_LongPress"
-    #"test_FillUnset",'test_AddAnni',"test_RemindTime","test_RemindDay_Single","test_RemindDay_Double","test_RemindDay_Triple","test_Icon"
-    #tests_anniversary.append()
+    tests_anniversary = ["test_FillUnset",'test_Date',"test_RemindTime","test_RemindDay_Single","test_DelAnni_Swipe",\
+                         "test_RemindDay_Double","test_RemindDay_Triple","test_Icon","test_DelAnni_LongPress"]
     testlogin = unittest.TestSuite(map(Test_Login,tests_login))
     testanniversary = unittest.TestSuite(map(Test_Anniversary,tests_anniversary))
-    #testsuite = unittest.TestSuite([testlogin, testanniversary])
-    testsuite = unittest.TestSuite(testanniversary)
-    #testsuite.addTest(TestMhome("test_screenshot"))
+    testsuite = unittest.TestSuite([testlogin, testanniversary])
+    #testsuite = unittest.TestSuite(testanniversary)
     file_name = 'F:\\mhome\\test_result.html'
     fp = open(file_name,'wb')
     renner = HTMLTestRunner.HTMLTestRunner(
