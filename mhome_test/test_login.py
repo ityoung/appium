@@ -22,12 +22,14 @@ class Test_Login(unittest.TestCase):
         cls.driver = webdriver.Remote('http://localhost:4723/wd/hub',desired_caps)
         cls.driver.implicitly_wait(5)
     def test_LoginByTel(self):
+        '''
         try:
             update = self.driver.find_element_by_id(me.cancel_btn_id)
             ss.screenshot(self.driver)
             update.click()
         except NoSuchElementException:
             self.test_Logout()
+        '''
         try:
             tel = self.driver.find_element_by_xpath(me.tel_xpath)
             if tel.text =='请输入手机号':

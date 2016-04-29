@@ -8,12 +8,13 @@ new_phone_num = '12345611223'
     
 if __name__ == '__main__':
     tests_login = ["test_LoginByTel","test_LoginByQQ"]
-    tests_anniversary = ["test_FillUnset",'test_Date',"test_RemindTime","test_RemindDay_Single","test_DelAnni_Swipe",\
-                         "test_RemindDay_Double","test_RemindDay_Triple","test_Icon","test_DelAnni_LongPress"]
+    tests_anniversary = ["test_RemindDay_Triple","test_Icon","test_DelAnni_LongPress"]
+    #"test_FillUnset",'test_Date',"test_RemindTime","test_RemindDay_Single","test_DelAnni_Swipe",\
+    #                     "test_RemindDay_Double",
     testlogin = unittest.TestSuite(map(Test_Login,tests_login))
     testanniversary = unittest.TestSuite(map(Test_Anniversary,tests_anniversary))
-    testsuite = unittest.TestSuite([testlogin, testanniversary])
-    #testsuite = unittest.TestSuite(testlogin)
+    #testsuite = unittest.TestSuite([testlogin, testanniversary])
+    testsuite = unittest.TestSuite(testanniversary)
     file_name = 'F:\\mhome\\test_result.html'
     fp = open(file_name,'wb')
     renner = HTMLTestRunner.HTMLTestRunner(
