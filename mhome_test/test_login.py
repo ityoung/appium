@@ -1,4 +1,5 @@
 import screen_shot as ss
+import devices_description as dd
 from lib import mhome_element as me
 import unittest
 import time
@@ -13,12 +14,11 @@ class Test_Login(unittest.TestCase):
             'appActivity': 'com.changhong.activity.login.LoginActivity',
             'appwaitActivity': 'com.tencent.open.agent.AuthorityActivity',      #qq login
             'platformName': 'Android',
-            'platformVersion': '6.0.1',
-            'deviceName': 'Nexus 5',
             'newCommandTimeout': 30,
             'unicodeKeyboard': 'True',
             "resetKeyboard": "True"
         }
+        desired_caps.update(dd.dd)
         cls.driver = webdriver.Remote('http://localhost:4723/wd/hub',desired_caps)
         cls.driver.implicitly_wait(5)
     def test_LoginByTel(self):
