@@ -4,7 +4,7 @@ import sys
 import logging
 
 TIME_format = "%y%m%d%H%M%S"
-img_path_base = 'F:/mhome/screeshot/'
+img_path_base = 'F:/mhome/mhome_test/screeshot/'
 
 def screenshot(driver):
     timestamp = time.strftime(TIME_format,time.localtime())
