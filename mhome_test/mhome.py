@@ -13,8 +13,8 @@ if __name__ == '__main__':
     #                     "test_RemindDay_Double",
     testlogin = unittest.TestSuite(map(Test_Login,tests_login))
     testanniversary = unittest.TestSuite(map(Test_Anniversary,tests_anniversary))
-    #testsuite = unittest.TestSuite([testlogin, testanniversary])
-    testsuite = unittest.TestSuite(testanniversary)
+    testsuite = unittest.TestSuite([testlogin, testanniversary])
+    #testsuite = unittest.TestSuite(testanniversary)
     file_name = 'F:\\mhome\\test_result.html'
     fp = open(file_name,'wb')
     renner = HTMLTestRunner.HTMLTestRunner(
